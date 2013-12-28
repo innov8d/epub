@@ -1,0 +1,16 @@
+PATH
+  remote: .
+  specs:
+    epub (1.0.0)
+      zipruby
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    zipruby (0.3.6)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  epub!
