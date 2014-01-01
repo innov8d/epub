@@ -4,7 +4,7 @@ require 'epub/manifest'
 require 'epub/spine'
 require 'epub/opf'
 require 'epub/archive'
-require 'epub/word_count_document'
+require 'epub/html'
 require 'nokogiri'
 
 module EPUB
@@ -91,7 +91,7 @@ module EPUB
 					next
 				end
 				
-				doc = WordCountDocument.new
+				doc = HTML::Document.new
 				parser = Nokogiri::XML::SAX::Parser.new(doc, "UTF-8")
 				parser.parse(file)
 				file.close
