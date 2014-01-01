@@ -45,25 +45,19 @@ module EPUB
 			end
 			
 			def attributes
-				if blank?(id) && blank?(classes)
-					return ''
-				end
-				
-				output = ['{']
+				output = []
 				
 				if !blank?(id)
-					output << ":#{id}:"
+					output << "{:##{id}}"
 				end
 				
 				if !blank?(classes)
 					classes.split(' ').each do |cls|
-						output << ".#{cls}"
+						output << "{:.#{cls}}"
 					end
 				end
 				
-				output << '}'
-				
-				output.join(' ')
+				output
 			end
 			
 			def render

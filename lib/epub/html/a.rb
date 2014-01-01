@@ -2,21 +2,36 @@ module EPUB
 	module HTML
 		class A < Generic
 			
-			def initialize(href)
-				super()
+			def initialize(attrs)
+				super('a', attrs)
+			end
+			
+			def href
+				h = get_attr('href')
 				
-				@href = href
+				if blank?(h)
+					return "#"
+				end
+				
+				h
 			end
 			
 			def render
-				text = super.join('')
-				output = []
+				string = strip(super.join(''))
 				
-				if !(blank?(@href) || blank?(text))
-					output << "[#{strip(text)}](#{@href})"
+				if blank?(string) 
+					string = " "
 				end
 				
-				output
+				output = []
+				
+				output << "[#{string}](#{href})"
+				
+				attributes.each do |attr|
+					output << attr
+				end
+				
+				[output.join('')]
 			end
 		end
 	end

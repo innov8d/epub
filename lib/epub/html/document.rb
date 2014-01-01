@@ -132,7 +132,7 @@ module EPUB
 				when 'pre', 'code'
 					new_node = Code.new
 				when 'a'
-					new_node = A.new(get_attr('href', attrs))
+					new_node = A.new(attrs)
 				when 'span'
 					new_node = SPAN.new
 				when 'em', 'i'
@@ -220,10 +220,9 @@ module EPUB
 				if @current.nil?
 					return
 				end
-			
-				@current.render.each do |line|
-					print line
-				end
+				
+				output = @current.render.join('').gsub(/\n{3,}/, "\n\n")
+				print output
 			end
 		
 		end

@@ -16,12 +16,13 @@ module EPUB
 			
 			def render
 				output = []
-				string = text
+				string = super.join('')
 				
 				if !string.empty?
+					output << "\n\n"
 					output << "#{'#' * @level} #{string}\n"
-					if attributes
-						output << attributes << "\n"
+					attributes.each do |attr|
+						output << "#{attr}\n"
 					end
 					output << "\n"
 				end

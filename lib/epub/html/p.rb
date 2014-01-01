@@ -13,8 +13,8 @@ module EPUB
 				end
 				
 				output = ["#{output}\n"]
-				if attributes
-					output << "#{attributes}\n"
+				attributes.each do |attr|
+					output << "#{attr}\n"
 				end
 				output << "\n"
 				
